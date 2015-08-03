@@ -62,10 +62,9 @@
         },
         onTapMove: function(ev){
             ev.preventDefault();
-            var _this = this,
-                timer = this.timer;
-            if(!timer){
-                timer = setTimeout(function(){
+            var _this = this;
+            if(!this.timer){
+                this.timer = setTimeout(function(){
                     x2 = hastouch ? ev.targetTouches[0].pageX - _this.canvas.offsetLeft : ev.pageX - _this.canvas.offsetLeft;
                     y2 = hastouch ? ev.targetTouches[0].pageY - _this.canvas.offsetTop : ev.pageY - _this.canvas.offsetTop;
 
@@ -77,6 +76,7 @@
 
                     x1 = x2;
                     y1 = y2;
+                    _this.timer = null;
                 }, 40);
             }
         },
